@@ -1,20 +1,21 @@
 class Solution {
     public int strStr(String haystack, String needle) {
-        int length1 = haystack.length();
-        int length2 = needle.length();
+        int length1= haystack.length();
+        int length2= needle.length();
+        int firstOccurence=0;
 
-        
+        if (length2 == 0) return 0;
 
         for(int i=0;i<=length1-length2;i++){
             int j;
-            for( j=0; j<length2;j++){
+            for(j=0;j<length2;j++){
                 if(haystack.charAt(i+j)!=needle.charAt(j)){
                     break;
                 }
-            } 
-                    if(j==length2){
-            return i;
-        }      
+            }
+            if(j==length2){
+                return i;
+            }
         }
         return -1;
     }
