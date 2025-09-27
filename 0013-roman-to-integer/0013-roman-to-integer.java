@@ -1,7 +1,5 @@
 class Solution {
     public int romanToInt(String s) {
-        int length = s.length();
-
         HashMap<Character,Integer> romanToInteger = new HashMap<>();
 
         romanToInteger.put('I',1);
@@ -12,17 +10,22 @@ class Solution {
         romanToInteger.put('D',500);
         romanToInteger.put('M',1000);
 
-        int value = 0;
+        int number = 0;
+        int previous = 0;
 
-        for(int i=0; i<length;i++){
-            int currentValue =  romanToInteger.get(s.charAt(i));
-            if(i<length-1 && currentValue<romanToInteger.get(s.charAt(i+1))){
-                value=value-currentValue;
+        for(int i = s.length()-1;i>=0;i--){
+            int current = romanToInteger.get(s.charAt(i));
+            
+            if(current<previous){
+                number=number-current;
             }
             else{
-                value=value+currentValue;
+                number=number+current;
             }
+            previous=current;
+            
         }
-        return value;
+        return number;
+
     }
 }
