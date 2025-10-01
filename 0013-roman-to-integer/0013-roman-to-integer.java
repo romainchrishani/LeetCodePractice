@@ -10,17 +10,19 @@ class Solution {
         romanToInteger.put('D',500);
         romanToInteger.put('M',1000);
 
+        
+
         int number = 0;
         int previous = 0;
 
         for(int i = s.length()-1;i>=0;i--){
             int current = romanToInteger.get(s.charAt(i));
             
-            if(current<previous){
-                number=number-current;
+            if(current>=previous){
+                number=number+current;
             }
             else{
-                number=number+current;
+                number=number-current;
             }
             previous=current;
             
